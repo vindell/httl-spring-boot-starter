@@ -18,7 +18,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.template.TemplateLocation;
 import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain;
-import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -108,7 +108,7 @@ public class HttlAutoConfiguration {
 		@ConditionalOnProperty(name = "spring.beetl.enabled", matchIfMissing = true)
 		public HttlViewResolver beetlViewResolver() {
 			HttlViewResolver resolver = new HttlViewResolver();
-			this.properties.applyToViewResolver(resolver);
+			this.properties.applyToMvcViewResolver(resolver);
 			return resolver;
 		}
 
