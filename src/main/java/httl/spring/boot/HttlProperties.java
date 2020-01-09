@@ -18,15 +18,29 @@ package httl.spring.boot;
 import java.util.Properties;
 
 import org.springframework.boot.autoconfigure.template.AbstractTemplateViewResolverProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@ConfigurationProperties(HttlProperties.PREFIX)
+@Getter
+@Setter
+@ToString
 public class HttlProperties extends AbstractTemplateViewResolverProperties {
 
+	public static final String PREFIX = "spring.httl";
+	
 	public static final String DEFAULT_TEMPLATE_LOADER_PATH = "classpath:/templates/";
 
 	public static final String DEFAULT_PREFIX = "";
 
 	public static final String DEFAULT_SUFFIX = ".httl";
 
+	/** Whether Enable Form Authorization. */
+	private boolean enabled = false;
+	
 	/**
 	 * Well-known Beetl keys which will be passed to Beetl's  Configuration.
 	 */
@@ -50,38 +64,6 @@ public class HttlProperties extends AbstractTemplateViewResolverProperties {
 
 	public HttlProperties() {
 		super(DEFAULT_PREFIX, DEFAULT_SUFFIX);
-	}
-
-	public Properties getSettings() {
-		return this.settings;
-	}
-
-	public void setSettings(Properties settings) {
-		this.settings = settings;
-	}
-
-	public String[] getTemplateLoaderPath() {
-		return this.templateLoaderPath;
-	}
-
-	public boolean isPreferFileSystemAccess() {
-		return this.preferFileSystemAccess;
-	}
-
-	public void setPreferFileSystemAccess(boolean preferFileSystemAccess) {
-		this.preferFileSystemAccess = preferFileSystemAccess;
-	}
-
-	public void setTemplateLoaderPath(String... templateLoaderPaths) {
-		this.templateLoaderPath = templateLoaderPaths;
-	}
-
-	public boolean isAutoCheck() {
-		return autoCheck;
-	}
-
-	public void setAutoCheck(boolean autoCheck) {
-		this.autoCheck = autoCheck;
 	}
 
 }
