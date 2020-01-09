@@ -30,7 +30,6 @@ import httl.web.springmvc.HttlViewResolver;
 
 
 @Configuration
-@ConditionalOnClass({ })
 @AutoConfigureAfter(WebMvcAutoConfiguration.class)
 @EnableConfigurationProperties(HttlProperties.class)
 public class HttlAutoConfiguration {
