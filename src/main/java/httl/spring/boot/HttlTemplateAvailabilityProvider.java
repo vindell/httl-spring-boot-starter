@@ -24,7 +24,7 @@ import org.springframework.boot.autoconfigure.template.PathBasedTemplateAvailabi
 public class HttlTemplateAvailabilityProvider extends PathBasedTemplateAvailabilityProvider {
 
 	public HttlTemplateAvailabilityProvider() {
-		super("org.httl.core.Configuration", HttlTemplateAvailabilityProperties.class, "spring.httl");
+		super("httl.spring.boot.HttlAutoConfiguration", HttlTemplateAvailabilityProperties.class, "spring.httl");
 	}
 
 	static final class HttlTemplateAvailabilityProperties extends TemplateAvailabilityProperties {
