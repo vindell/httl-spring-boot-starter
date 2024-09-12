@@ -24,14 +24,14 @@ import org.springframework.boot.autoconfigure.template.PathBasedTemplateAvailabi
 public class HttlTemplateAvailabilityProvider extends PathBasedTemplateAvailabilityProvider {
 
 	public HttlTemplateAvailabilityProvider() {
-		super("org.beetl.core.Configuration", JetbrickTemplateAvailabilityProperties.class, "spring.jetbrick");
+		super("org.httl.core.Configuration", HttlTemplateAvailabilityProperties.class, "spring.httl");
 	}
 
-	static final class JetbrickTemplateAvailabilityProperties extends TemplateAvailabilityProperties {
+	static final class HttlTemplateAvailabilityProperties extends TemplateAvailabilityProperties {
 
 		private List<String> templateLoaderPath = new ArrayList<String>(Arrays.asList(HttlProperties.DEFAULT_TEMPLATE_LOADER_PATH));
 
-		JetbrickTemplateAvailabilityProperties() {
+		HttlTemplateAvailabilityProperties() {
 			super(HttlProperties.DEFAULT_PREFIX, HttlProperties.DEFAULT_SUFFIX);
 		}
 

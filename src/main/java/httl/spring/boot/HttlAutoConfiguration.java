@@ -61,18 +61,18 @@ public class HttlAutoConfiguration {
 			if (templatePathLocation == null) {
 				logger.warn("Cannot find template location(s): " + locations
 						+ " (please add some templates, "
-						+ "check your Beetl configuration, or set "
-						+ "spring.Beetl.checkTemplateLocation=false)");
+						+ "check your Httl configuration, or set "
+						+ "spring.httl.checkTemplateLocation=false)");
 			}
 		}
 	}
 
-	protected static class BeetlConfiguration {
+	protected static class HttlConfiguration {
 
 		@Autowired
 		protected HttlProperties properties;
 
-		protected void applyProperties(BeetlConfiguration factory) {
+		protected void applyProperties(HttlConfiguration factory) {
 			/*factory.setTemplateLoaderPaths(this.properties.getTemplateLoaderPath());
 			factory.setPreferFileSystemAccess(this.properties.isPreferFileSystemAccess());
 			factory.setDefaultEncoding(this.properties.getCharsetName());*/
@@ -85,7 +85,7 @@ public class HttlAutoConfiguration {
 	
 	@Configuration
 	@ConditionalOnNotWebApplication
-	public static class BeetlNonWebConfiguration extends BeetlConfiguration {
+	public static class HttlNonWebConfiguration extends HttlConfiguration {
 
 		/*@Bean
 		@ConditionalOnMissingBean
@@ -100,12 +100,12 @@ public class HttlAutoConfiguration {
 	@Configuration
 	@ConditionalOnClass({ Servlet.class, WebEngine.class })
 	@ConditionalOnWebApplication
-	public static class BeetlWebConfiguration extends BeetlConfiguration {
+	public static class HttlWebConfiguration extends HttlConfiguration {
 		
 		@Bean
-		@ConditionalOnMissingBean(name = "beetlViewResolver")
-		@ConditionalOnProperty(name = "spring.beetl.enabled", matchIfMissing = true)
-		public HttlViewResolver beetlViewResolver() {
+		@ConditionalOnMissingBean(name = "httlViewResolver")
+		@ConditionalOnProperty(name = "spring.httl.enabled", matchIfMissing = true)
+		public HttlViewResolver httlViewResolver() {
 			HttlViewResolver resolver = new HttlViewResolver();
 			this.properties.applyToMvcViewResolver(resolver);
 			return resolver;
